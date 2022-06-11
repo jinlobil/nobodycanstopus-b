@@ -1,17 +1,21 @@
 package com.example.nobodycanstopusb.Model;
 
 import com.example.nobodycanstopusb.dto.UserRequestDto;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class User extends Timestamped {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userNumber;
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.ALL)
+    private List<Post> postList = new ArrayList<>();
 
     @Column(nullable = false)
     private String username;
