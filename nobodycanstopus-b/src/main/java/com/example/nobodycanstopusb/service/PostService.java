@@ -1,8 +1,9 @@
 package com.example.nobodycanstopusb.service;
 
-import com.sparta.teamproject6.domain.Post;
-import com.sparta.teamproject6.dto.PostRequestsDto;
-import com.sparta.teamproject6.repository.PostRepository;
+
+import com.example.nobodycanstopusb.Model.Post;
+import com.example.nobodycanstopusb.dto.PostRequestsDto;
+import com.example.nobodycanstopusb.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

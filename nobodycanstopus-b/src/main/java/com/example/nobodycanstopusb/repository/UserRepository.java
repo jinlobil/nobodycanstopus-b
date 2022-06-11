@@ -1,6 +1,7 @@
 package com.example.nobodycanstopusb.repository;
 
-import com.sparta.teamproject6.domain.User;
+
+import com.example.nobodycanstopusb.Model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
