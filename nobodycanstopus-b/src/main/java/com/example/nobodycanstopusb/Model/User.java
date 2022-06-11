@@ -17,6 +17,7 @@ public class User extends Timestamped {
     @OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Post> postList = new ArrayList<>();
 
+
     @Column(nullable = false)
     private String username;
 

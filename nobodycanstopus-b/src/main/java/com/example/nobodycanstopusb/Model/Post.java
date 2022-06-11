@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor // 기본 생성자 만듬.
 @Getter // 조회를 하기 위해 있어야 됨.
@@ -21,6 +23,9 @@ public class Post extends Timestamped { // 생성 , 수정 시간을 자동으�
     @JoinColumn(name = "userNumber")
     private User user;
 
+    @JsonBackReference
+    @OneToMany(mappedBy = "post", orphanRemoval = true, cascade = CascadeType.ALL)
+    private List<Comment> commentList = new ArrayList<>();
 
 
     // 제목

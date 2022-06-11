@@ -1,12 +1,11 @@
 package com.example.nobodycanstopusb.Model;
 
+import com.example.nobodycanstopusb.dto.CommentRequetsDto;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @NoArgsConstructor
@@ -17,11 +16,22 @@ public class Comment {
     @Id
     private Long id;
 
-    @Column(nullable = false)
-    private String nickname;
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name = "postId")
+    private Post post;
 
     @Column(nullable = false)
     private  String comment;
 
+    public Comment(CommentRequetsDto requetsDto, Post post) {
+        this.comment = requetsDto.getComment();
+        this.post = post;
+
+    }
+
+    public void update(CommentRequetsDto requestsDto) {
+        this.comment = requestsDto.getComment();
+    }
 }
 
