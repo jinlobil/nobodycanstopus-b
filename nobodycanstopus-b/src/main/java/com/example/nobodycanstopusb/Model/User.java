@@ -2,11 +2,16 @@ package com.example.nobodycanstopusb.Model;
 
 import com.example.nobodycanstopusb.dto.UserRequestDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@NoArgsConstructor // 기본 생성자 만듬.
+@Getter // 조회를 하기 위해 있어야 됨.
+@Entity
 public class User extends Timestamped {
 
     @Id
