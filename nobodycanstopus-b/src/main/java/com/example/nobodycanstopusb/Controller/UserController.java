@@ -42,7 +42,7 @@ public class UserController {
         return userRepository.findByNickname(nickname);
     }
 
-    @PostMapping("/api/user/login")
+    @PostMapping("/api/login")
     public String login(@RequestBody LoginRequetsDto loginRequestDto) {
         if (userService.login(loginRequestDto)) {
             String token = jwtTokenProvider.createToken(loginRequestDto.getUsername());
