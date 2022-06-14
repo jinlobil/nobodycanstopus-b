@@ -1,6 +1,6 @@
 package com.example.nobodycanstopusb.Model;
 
-import com.example.nobodycanstopusb.dto.UserRequestDto;
+import com.example.nobodycanstopusb.dto.UserRequestsDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor // 기본 생성자 만듬.
 @Getter // 조회를 하기 위해 있어야 됨.
 @Entity
+@Table(name = "Users")
 public class User extends Timestamped {
 
     @Id
@@ -32,26 +33,23 @@ public class User extends Timestamped {
     @Column(nullable = false)
     private String password;
 
-    public User(Long userNumber, String username, String nickname, String password) {
-        this.userNumber = userNumber;
-        this.username = username;
+    @Column(nullable = false)
+    private String passwordCk;
+
+
+    public User(UserRequestsDto requestDto) {
+
+        this.username = requestDto.getUsername();
+        this.nickname = requestDto.getNickname();
+        this.password = requestDto.getPassword();
+        this.passwordCk = requestDto.getPasswordCk();
+    }
+
+
+    public User(String nickname, String username, String password, String passwordCk) {
         this.nickname = nickname;
+        this.username = username;
         this.password = password;
-    }
-
-    public User(UserRequestDto requestDto) {
-
-        this.userNumber = requestDto.getUserNumber();
-        this.nickname = requestDto.getUsername();
-        this.nickname = requestDto.getNickname();
-        this.password = requestDto.getPassword();
-    }
-
-    public void update(UserRequestDto requestDto) {
-
-        this.userNumber = requestDto.getUserNumber();
-        this.nickname = requestDto.getUsername();
-        this.nickname = requestDto.getNickname();
-        this.password = requestDto.getPassword();
+        this.passwordCk = passwordCk;
     }
 }
