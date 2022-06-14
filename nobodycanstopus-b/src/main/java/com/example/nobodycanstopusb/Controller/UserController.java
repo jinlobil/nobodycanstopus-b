@@ -31,16 +31,16 @@ public class UserController {
         return new ResponseEntity<ApiResponseMessage>(message, HttpStatus.OK);
 
     }
-    // 아이디 중복 체크
-    @PostMapping ("/api/singup/usernameck")
-    public Optional<User> usernameck(@PathVariable String username) {
-      return userRepository.findByUsername(username);
-    }
-    //닉네임 중복체크
-    @PostMapping("/api/singup/nicknameck")
-    public Optional<User>nicknameck(@PathVariable String nickname) {
-        return userRepository.findByNickname(nickname);
-    }
+//    // 아이디 중복 체크
+//    @PostMapping ("/api/singup/usernameck")
+//    public Optional<User> usernameck(@PathVariable String username) {
+//      return userRepository.findByUsername(username);
+//    }
+//    //닉네임 중복체크
+//    @PostMapping("/api/singup/nicknameck")
+//    public Optional<User>nicknameck(@PathVariable String nickname) {
+//        return userRepository.findByNickname(nickname);
+//    }
 
     @PostMapping("/api/login")
     public String login(@RequestBody LoginRequetsDto loginRequestDto) {
