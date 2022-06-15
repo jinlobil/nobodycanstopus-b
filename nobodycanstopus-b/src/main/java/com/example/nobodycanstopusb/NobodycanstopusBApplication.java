@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 //잘되나요
+//상우 브랜치
 @EnableJpaAuditing
 @SpringBootApplication
 public class NobodycanstopusBApplication {
