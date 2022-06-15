@@ -19,9 +19,9 @@ public class User extends Timestamped {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userNumber;
 
-    @JsonBackReference
-    @OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.ALL)
-    private List<Post> postList = new ArrayList<>();
+//    @JsonBackReference
+//    @OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.ALL)
+//    private List<Post> postList = new ArrayList<>();
 
 
     @Column(nullable = false)
@@ -33,8 +33,7 @@ public class User extends Timestamped {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
-    private String passwordCk;
+
 
 
     public User(UserRequestsDto requestDto) {
@@ -42,14 +41,13 @@ public class User extends Timestamped {
         this.username = requestDto.getUsername();
         this.nickname = requestDto.getNickname();
         this.password = requestDto.getPassword();
-        this.passwordCk = requestDto.getPasswordCk();
     }
 
 
-    public User(String nickname, String username, String password, String passwordCk) {
+    public User(String nickname, String username, String password) {
         this.nickname = nickname;
         this.username = username;
         this.password = password;
-        this.passwordCk = passwordCk;
+
     }
 }

@@ -22,8 +22,6 @@ public class UserService {
         String nickname = requestsDto.getNickname();
         String username = requestsDto.getUsername();
         String password = requestsDto.getPassword();
-        String passwordCk = requestsDto.getPasswordCk();;
-        System.out.println("passwordCk = " + passwordCk);
         System.out.println("username = " + username);
         System.out.println("password = " + password);
         System.out.println("nickname = " + nickname);
@@ -36,18 +34,14 @@ public class UserService {
         if (foundid.isPresent()) {
             throw new IllegalArgumentException("중복된 사용자 닉네임이 존재합니다.");
         }
-        if (password.length() > 6){
+        if (password.length() < 6){
             throw new IllegalArgumentException("비밀번호는 6자 이상 입력해주세요");
-        }
-        if(!password.equals(passwordCk)){
-            throw new IllegalArgumentException("비밀번호와 비밀번호 확인이 같지않습니다 확인해주세요");
         }
             //패스워드 암호화
             password = passwordEncoder.encode(requestsDto.getPassword());
-            passwordCk = passwordEncoder.encode(requestsDto.getPasswordCk());
 
 
-            User user = new User(nickname, username, password, passwordCk);
+            User user = new User(nickname, username, password);
             System.out.println("user = " + user);
             userRepository.save(user);
 
